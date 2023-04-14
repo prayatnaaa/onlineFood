@@ -21,17 +21,14 @@ public class listMenu {
 
             menu1.setHargaMenu(this.harga);
             menu1.setNamaMenu(this.nama);
-
-            System.out.println(menu1.getNamaMenu());
-            System.out.println(menu1.getHargaMenu());
-
     }
 
 
     public void lihatMenu() {
 
         for (int i=0; i< menu1.size();) {
-            System.out.println(menu1.get(i));
+            System.out.println(menu1.get(i).getNamaMenu());
+            System.out.println(menu1.get(i).getHargaMenu());
             i++;
         }
     }
