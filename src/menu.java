@@ -1,25 +1,29 @@
-public class menu {
-        private String namaMenu;
-        private int hargaMenu;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-        public menu(String namaMenu, int hargaMenu){
-            this.namaMenu=namaMenu;
-            this.hargaMenu=hargaMenu;
-        }
+public class Menu {
+    private String nama;
+    private int harga;
 
-        public void setNamaMenu(String namaMenu){
-            this.namaMenu=namaMenu;
-        }
-        public void setHargaMenu(int hargaMenu){
-            this.hargaMenu=hargaMenu;
-        }
-
-        public String getNamaMenu(){
-            return this.namaMenu;
-        }
-        public int getHargaMenu(){
-            return this.hargaMenu;
-        }
-
+    public Menu(String nama, int harga){
+        this.nama = nama;
+        this.harga = harga;
     }
 
+    public String getNamaMenu() {
+        return this.nama;
+    }
+
+    public int getHarga() {
+        return this.harga;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public void setHarga(int harga) {
+        this.harga = harga;
+    }
+
+}
