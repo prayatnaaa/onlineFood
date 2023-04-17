@@ -1,49 +1,61 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 public class menuCustomer {
-    private String nama;
-    private String alamat;
-    private ArrayList<Menu> listOrder=new ArrayList<>();
-    private ArrayList<Integer> jumlahOrder=new ArrayList<>();
-    Menu menus;
+    private static ArrayList<Menu> listOrder=new ArrayList<>();
+    private static ArrayList<Integer> jumlahOrder=new ArrayList<>();
 
-    Scanner sc=new Scanner(System.in);
+    static Customer customer;
+    static Menu menus;
 
-    menuCustomer() {
-        this.nama=nama;
-        this.alamat=alamat;
-    }
+    static Scanner sc=new Scanner(System.in);
 
-    public Menu getMenu(int index){
+    public static Menu getMenu(int index){
         return listOrder.get(index);
     }
-    public void setNamaCust(String nama){
-        this.nama=nama;
-    }
-    public String getNamaCust(){
-        return this.nama;
-    }
-    public void setAlamatCust(String nama) {
-        this.alamat = alamat;
-    }
-    public String getAlamatCust() {
-        return this.alamat;
+    public static void loginCust(){
+
+        System.out.println("================================================");
+        System.out.println("||                LIST CUSTOMER               ||");
+        System.out.println("================================================");
+        System.out.println("|| 1. Buat Pesanan                            ||");
+        System.out.println("|| 2. Lihat Pesanan                           ||");
+        System.out.println("|| 3. Menu Login                              ||");
+        System.out.println("|| 0. Exit                                    ||");
+        System.out.println("================================================");
+        System.out.print("Pilih Ospi: ");
+        int pilih=sc.nextInt();
+
+        switch (pilih) {
+            case 1 -> {
+                buatPesanan();
+                loginCust();
+            }
+            case 2 -> {
+                daftarPesan();
+                loginCust();
+            }
+            case 3 -> Main.login();
+            case 0 -> System.exit(0);
+            default -> {
+                System.out.println("WRONG INPUT, INPUT CORRECTLY!");
+                loginCust();
+            }
+        }
     }
 
-    public void buatPesanan(Customer customer){
+    public static void buatPesanan(){
 
-        ArrayList<Resto>restos=new ArrayList<>();
-        if (restos.isEmpty()) {
+        if (Data.restos.isEmpty()) {
             System.out.println("================================================");
             System.out.println("||         T I D A K   A D A   R E S T O      ||");
             System.out.println("================================================");
-            //buatPesanan(cus);
+            loginCust();
         } else {
             System.out.println("================================================");
             System.out.println("||             R.E.S.T.A.U.R.A.N.T            ||");
             System.out.println("================================================");
-            for (int i = 0; i < restos.size(); i++) {
-                System.out.printf("%d. NAMA RESTO: %s, LOKASI: %s\n", (i + 1), restos.get(i).getNamaResto(), restos.get(i).getLokasiResto());
+            for (int i = 0; i < Data.restos.size(); i++) {
+                System.out.printf("%d. NAMA RESTO: %s, LOKASI: %s\n", (i + 1), Data.restos.get(i).getNamaResto(), Data.restos.get(i).getLokasiResto());
             }
             System.out.println("0. Kembali");
             System.out.println("================================================");
@@ -51,21 +63,22 @@ public class menuCustomer {
             int pilih = sc.nextInt();
 
             if (pilih == 0) {
-                //menuAdmin();
-            } else if (pilih < 0 || pilih > restos.size()) {
+                loginCust();
+            } else if (pilih < 0 || pilih > Data.restos.size()) {
                 System.out.println("================================================");
                 System.out.println("||        T I D A K   A D A   D A T A         ||");
                 System.out.println("================================================");
-                //lihatResto();
+                loginCust();
             } else {
-                Resto resto = restos.get(pilih - 1);
-                buatPesananLoop(customer, resto);
+                Resto resto = Data.restos.get(pilih - 1);
+                buatPesananLoop();
             }
         }
     }
-    public void buatPesananLoop(Customer customer, Resto resto){
+    public static void buatPesananLoop(){
 
         listResturant lr=new listResturant();
+
         if(listOrder.isEmpty()){
             System.out.println("================================================");
             System.out.println("||               TIDAK ADA MENU               ||");
@@ -92,10 +105,10 @@ public class menuCustomer {
             System.out.print("Pilih Opsi: ");
             int pilih2=sc.nextInt();
             if(pilih2==1){
-                buatPesananLoop(customer, resto);
+                buatPesananLoop();
             }
             else if(pilih2==2){
-                daftarPesan(customer, resto);
+                daftarPesan();
             }
             else{
                 System.out.println("salah");
@@ -103,18 +116,16 @@ public class menuCustomer {
         }
     }
 
-    public void daftarPesan(Customer customer, Resto resto){
+    public static void daftarPesan(){
+        Customer customer1=new Customer();
+
         System.out.println("================================================");
         System.out.println("|| ID ||           DAFTAR PESANAN             ||");
         System.out.println("================================================");
-        System.out.println("|| Nama Resto   : "+resto.getNamaResto());
-        System.out.println("|| Lokasi Resto : "+resto.getLokasiResto());
-        System.out.println("================================================");
-        for(int i=0; i<listOrder.size();i++)
-        System.out.printf("|| %d. %s        (%d)  %d", (i+1), listOrder.get(i).getNamaMenu(), jumlahOrder.get(i).intValue(), (customer.getJarak()*1000)+(menus.getHarga()*jumlahOrder.get(i).intValue()));
+        for(int i=0; i<listOrder.size();i++) {
+            System.out.printf("|| %d. %s        (%d)  %d", (i + 1), listOrder.get(i).getNamaMenu(), jumlahOrder.get(i).intValue(), (customer1.getJarak() * 1000) + (menus.getHarga() * jumlahOrder.get(i).intValue()));
+        }
         System.out.println("================================================");
         System.out.println();
     }
-
-
 }
