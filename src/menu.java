@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Menu {
     private String nama;
     private int harga;
@@ -25,5 +22,6 @@ public class Menu {
     public void setHarga(int harga) {
         this.harga = harga;
     }
+
 
 }
