@@ -1,16 +1,13 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 public class menuCustomer {
-    private static ArrayList<Menu> listOrder=new ArrayList<>();
+
     private static ArrayList<Integer> jumlahOrder=new ArrayList<>();
 
-    static Customer customer;
-    static Menu menus;
-
     static Scanner sc=new Scanner(System.in);
-
+Data menu;
     public static Menu getMenu(int index){
-        return listOrder.get(index);
+        return Data.menus.get(index);
     }
     public static void loginCust(){
 
@@ -22,7 +19,7 @@ public class menuCustomer {
         System.out.println("|| 3. Menu Login                              ||");
         System.out.println("|| 0. Exit                                    ||");
         System.out.println("================================================");
-        System.out.print("Pilih Ospi: ");
+        System.out.print("Choose an Option: ");
         int pilih=sc.nextInt();
 
         switch (pilih) {
@@ -49,6 +46,7 @@ public class menuCustomer {
             System.out.println("================================================");
             System.out.println("||         T I D A K   A D A   R E S T O      ||");
             System.out.println("================================================");
+            System.out.println();
             loginCust();
         } else {
             System.out.println("================================================");
@@ -59,7 +57,7 @@ public class menuCustomer {
             }
             System.out.println("0. Kembali");
             System.out.println("================================================");
-            System.out.println("Pilih Resto: ");
+            System.out.print("Pilih Resto: ");
             int pilih = sc.nextInt();
 
             if (pilih == 0) {
@@ -70,60 +68,65 @@ public class menuCustomer {
                 System.out.println("================================================");
                 loginCust();
             } else {
-                Resto resto = Data.restos.get(pilih - 1);
-                buatPesananLoop();
+                Data.resto= Data.restos.get(pilih - 1);
+                buatPesananLoop(Data.resto);
             }
         }
     }
-    public static void buatPesananLoop(){
+    public static void buatPesananLoop(Resto resto) {
 
-        listResturant lr=new listResturant();
+        listResturant lr = new listResturant();
 
-        if(listOrder.isEmpty()){
+        if (Data.menus.isEmpty()) {
             System.out.println("================================================");
             System.out.println("||               TIDAK ADA MENU               ||");
             System.out.println("================================================");
-        }
-        else{
+            System.out.println();
+        } else {
             lr.lihatMenu();
-            System.out.print("|| Pilih Opsi: ");
-            int pilih=sc.nextInt();
+            System.out.print("|| Pilih Menu: ");
+            int pilihMenu = sc.nextInt();
             System.out.print("Jumlah: ");
-            int jumlah=sc.nextInt();
-            System.out.println("Berapa kilometer dari tujuan: ");
-            int jarak=sc.nextInt();
+            int jumlah = sc.nextInt();
+            System.out.print("Jarak Dari Lokasi Tujuan (Km): ");
+            int jarak = sc.nextInt();
 
-            customer.setJarak(jarak);
-
-            listOrder.add(getMenu(pilih-1));
+            Data.customer.setJarak(jarak);
+            Data.menus.add(getMenu(pilihMenu - 1));
             jumlahOrder.add(jumlah);
+            Data.customers.add(Data.customer);
 
-            System.out.println("================================================");
-            System.out.println("|| 1. Tambah Pesanan                          ||");
-            System.out.println("|| 2. Checkout                                ||");
-            System.out.println("================================================");
-            System.out.print("Pilih Opsi: ");
-            int pilih2=sc.nextInt();
-            if(pilih2==1){
-                buatPesananLoop();
-            }
-            else if(pilih2==2){
-                daftarPesan();
-            }
-            else{
-                System.out.println("salah");
+            while (true) {
+                System.out.println("================================================");
+                System.out.println("|| 1. Tambah Pesanan                          ||");
+                System.out.println("|| 2. Pembayaran                              ||");
+                System.out.println("================================================");
+                System.out.print("Choose an Option: ");
+                int pilih2 = sc.nextInt();
+                if (pilih2 == 1) {
+                    buatPesananLoop(Data.resto);
+                } else if (pilih2 == 2) {
+                    daftarPesan();
+                } else {
+                    System.out.println("WRONG INPUT, PLEASE INPUT CORRECTLY!");
+
+                }
             }
         }
     }
 
     public static void daftarPesan(){
-        Customer customer1=new Customer();
 
         System.out.println("================================================");
-        System.out.println("|| ID ||           DAFTAR PESANAN             ||");
+        System.out.println("||                DAFTAR PESANAN              ||");
         System.out.println("================================================");
-        for(int i=0; i<listOrder.size();i++) {
-            System.out.printf("|| %d. %s        (%d)  %d", (i + 1), listOrder.get(i).getNamaMenu(), jumlahOrder.get(i).intValue(), (customer1.getJarak() * 1000) + (menus.getHarga() * jumlahOrder.get(i).intValue()));
+        System.out.println("RESTO: " +Data.resto.getNamaResto());
+        System.out.println("================================================");
+        for(int i=0; i<Data.menus.size() && i<jumlahOrder.size();i++) {
+            System.out.println("ID      : "+(i+1));
+            System.out.printf("%-20s %d \n", Data.menus.get(i).getNamaMenu(), jumlahOrder.get(i));
+            System.out.println("JARAK   : "+Data.customer.getJarak());
+            System.out.println("TOTAL   : " +((Data.customer.getJarak()*500)+(Data.menu.getHarga() * jumlahOrder.get(i))));
         }
         System.out.println("================================================");
         System.out.println();
