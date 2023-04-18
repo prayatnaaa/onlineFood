@@ -22,7 +22,8 @@ public class Admin {
         resto.setLokasiResto(lokasi);
 
         Data.restos.add(resto);
-
+        System.out.println("SUCCEED!");
+        System.out.println();
         menuAdmin();
     }
 
@@ -37,12 +38,13 @@ public class Admin {
             System.out.println("================================================");
             System.out.println("||             R.E.S.T.A.U.R.A.N.T            ||");
             System.out.println("================================================");
+            System.out.println("|| ID ||  NAMA RESTO    ||        LOKASI      ||");
             for (int i = 0; i < Data.restos.size(); i++) {
-                System.out.printf("%d. NAMA RESTO: %s, LOKASI: %s\n", (i + 1), Data.restos.get(i).getNamaResto(), Data.restos.get(i).getLokasiResto());
+                System.out.printf("%d.  %-10s %-10s\n", (i + 1), Data.restos.get(i).getNamaResto(), Data.restos.get(i).getLokasiResto());
             }
-            System.out.println(" 0. Kembali ke Menu Admin");
             System.out.println("================================================");
-            System.out.print("Masukan Opsi: ");
+            System.out.println("*Press 0 to Return to \"Menu Admin\"");
+            System.out.print("Choose an Option: ");
             int pilih = sc.nextInt();
 
             if (pilih == 0) {
@@ -55,9 +57,9 @@ public class Admin {
             } else {
                 Resto resto=Data.restos.get(pilih - 1);
                 System.out.println("|| 1. TAMBAH MENU                             ||");
-                System.out.println("|| 2. KEMBALI                              ||");
+                System.out.println("|| 2. KEMBALI                                 ||");
                 System.out.println("================================================");
-                System.out.print("Pilih Opsi: ");
+                System.out.print("Choose an Option: ");
                 int select = sc.nextInt();
                 if (select == 1) {
                     lr.tambahMenu();
@@ -66,6 +68,7 @@ public class Admin {
                     menuAdmin();
                 } else {
                     System.out.println("SALAH");
+                    System.out.println();
                     lihatResto();
                 }
             }
@@ -80,14 +83,15 @@ public class Admin {
         }
         else{
             System.out.println("================================================");
-            System.out.println("||                 RESTAURANT                 ||");
+            System.out.println("||             R.E.S.T.A.U.R.A.N.T            ||");
             System.out.println("================================================");
-            for(int i=0; i<Data.restos.size();i++){
-                System.out.printf("%d. NAMA RESTO: %s, LOKASI: %s\n", (i + 1), Data.restos.get(i).getNamaResto(), Data.restos.get(i).getLokasiResto());
+            System.out.println("|| ID ||  NAMA RESTO    ||        LOKASI      ||");
+            for (int i = 0; i < Data.restos.size(); i++) {
+                System.out.printf("%d.  %-10s %-10s\n", (i + 1), Data.restos.get(i).getNamaResto(), Data.restos.get(i).getLokasiResto());
             }
-            System.out.println("0. Kembali ke Menu Admin");
             System.out.println("================================================");
-            System.out.print("Masukan Opsi: ");
+            System.out.println("Press 0 to Return to \"Menu Admin\"");
+            System.out.print("Choose an Option: ");
             int hapusResto=sc.nextInt();
 
             if(hapusResto==0){
@@ -116,7 +120,7 @@ public class Admin {
         System.out.println("||  4. Kembali ke Login                       ||");
         System.out.println("||  0. Exit                                   ||");
         System.out.println("================================================");
-        System.out.print("Pilih Opsi: ");
+        System.out.print("Choose an Option: ");
         int pilih = sc.nextInt();
 
         switch (pilih) {
