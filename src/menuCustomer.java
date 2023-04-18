@@ -83,11 +83,11 @@ public class menuCustomer {
             System.out.println();
         } else {
             lr.lihatMenu();
-            System.out.print("|| Pilih Menu: ");
+            System.out.print("|| Choose Menu: ");
             int pilihMenu = sc.nextInt();
-            System.out.print("Jumlah: ");
+            System.out.print("|| Jumlah: ");
             int jumlah = sc.nextInt();
-            System.out.print("Jarak Dari Lokasi Tujuan (Km): ");
+            System.out.print("|| Jarak Dari Lokasi Tujuan (Km): ");
             int jarak = sc.nextInt();
 
             Data.customer.setJarak(jarak);
@@ -95,7 +95,6 @@ public class menuCustomer {
             jumlahOrder.add(jumlah);
             Data.customers.add(Data.customer);
 
-            while (true) {
                 System.out.println("================================================");
                 System.out.println("|| 1. Tambah Pesanan                          ||");
                 System.out.println("|| 2. Pembayaran                              ||");
@@ -108,9 +107,7 @@ public class menuCustomer {
                     daftarPesan();
                 } else {
                     System.out.println("WRONG INPUT, PLEASE INPUT CORRECTLY!");
-
                 }
-            }
         }
     }
 
@@ -123,7 +120,7 @@ public class menuCustomer {
         System.out.println("================================================");
         for(int i=0; i<Data.menus.size() && i<jumlahOrder.size();i++) {
             System.out.println("ID      : "+(i+1));
-            System.out.printf("%-20s %d \n", Data.menus.get(i).getNamaMenu(), jumlahOrder.get(i));
+            System.out.printf("PESANAN  : %-20s (%d) \n", Data.menus.get(i).getNamaMenu(), jumlahOrder.get(i));
             System.out.println("JARAK   : "+Data.customer.getJarak());
             System.out.println("TOTAL   : " +((Data.customer.getJarak()*500)+(Data.menu.getHarga() * jumlahOrder.get(i))));
         }

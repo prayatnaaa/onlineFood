@@ -37,7 +37,7 @@ public class listResturant {
             System.out.println("||                  M.E.N.U                   ||");
             System.out.println("================================================");
             for (int i = 0; i < Data.menus.size(); i++) {
-                System.out.printf("|| %d. NAMA MENU: %s         HARGA: Rp.%-46s \n", (i + 1), Data.menus.get(i).getNamaMenu(), Data.menus.get(i).getHarga());
+                System.out.printf("|| %d. NAMA MENU: %s      HARGA: Rp.%-46s \n", (i + 1), Data.menus.get(i).getNamaMenu(), Data.menus.get(i).getHarga());
             }
             System.out.println("================================================");
         }

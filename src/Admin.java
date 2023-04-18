@@ -39,8 +39,9 @@ public class Admin {
             System.out.println("||             R.E.S.T.A.U.R.A.N.T            ||");
             System.out.println("================================================");
             System.out.println("|| ID ||  NAMA RESTO    ||        LOKASI      ||");
+            System.out.println("================================================");
             for (int i = 0; i < Data.restos.size(); i++) {
-                System.out.printf("%d.  %-10s %-10s\n", (i + 1), Data.restos.get(i).getNamaResto(), Data.restos.get(i).getLokasiResto());
+                System.out.printf("   %d        %-18s %-10s\n", (i + 1), Data.restos.get(i).getNamaResto(), Data.restos.get(i).getLokasiResto());
             }
             System.out.println("================================================");
             System.out.println("*Press 0 to Return to \"Menu Admin\"");
@@ -56,6 +57,7 @@ public class Admin {
                 lihatResto();
             } else {
                 Resto resto=Data.restos.get(pilih - 1);
+                System.out.println("================================================");
                 System.out.println("|| 1. TAMBAH MENU                             ||");
                 System.out.println("|| 2. KEMBALI                                 ||");
                 System.out.println("================================================");
@@ -136,6 +138,3 @@ public class Admin {
         }
     }
 }
-
-
-
