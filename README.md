@@ -41,6 +41,7 @@ dimana admin dapat melihat restaurant, menambah restaurant, menghapus resturant.
 admin juga dapat menambahkan menu setelah menambahkan restaurant.
 <br>
 <img src= "img/Image 18-04-23 at 15.50.jpg">
+<br>
 
 2. ***Menu Melihat Restaurant***
 <br>
@@ -60,6 +61,7 @@ dimana user memilih untuk menambah menu pada restaurant Mcdonald.
 <img src= "img/Image 18-04-23 at 15.57.jpg">
 <br>
 <img src= "img/Image 18-04-23 at 15.59.jpg">
+<br>
 3. ***Menu Menambah Restaurant***
    <br>
    Admin dapat membuat restaurant pada menu 'Tambah Restaurant'. Berikut merupakan
@@ -89,6 +91,7 @@ Berikut merupakan tampilan awal ketika user masuk sebagai customer pada program,
 dimana customer dapat membuat pesanan, melihat pesanan, dan kembali ke tampilan awal.
 <br>
 <img src= "img/Image 18-04-23 at 16.32.jpg">
+<br>
 
 2. ***Membuat Pesanan***
 <br>
@@ -113,7 +116,17 @@ Customer dapat melihat pesanan atau history pesanan yang telah dibuat pada menu 
  dari menu 'Lihat Pesanan'.
 <br>
 <img src= "img/Image 18-04-23 at 16.38.jpg">
+<br>
 
 4. ***Menu Kembali ke Menu Login***
    Customer juga dapat kembali lagi ke menu login atau tampilan awal ketika customer memilih
    menu 'Menu Login'.
+
+## Unified Modeling Language (UML)
+
+Unified Modeling Language atau UML merupakan jenis diagram yang digunakan pada 
+pengambaran program agar dapat lebih jelas menggambarkan struktur OOP. 
+Berikut merupakan UML dari program onlineFood.
+<br>
+<br>
+<img src= "img/UML.jpg">
