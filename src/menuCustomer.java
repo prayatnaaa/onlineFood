@@ -5,7 +5,6 @@ public class menuCustomer {
     private static ArrayList<Integer> jumlahOrder=new ArrayList<>();
 
     static Scanner sc=new Scanner(System.in);
-Data menu;
     public static Menu getMenu(int index){
         return Data.menus.get(index);
     }
