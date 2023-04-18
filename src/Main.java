@@ -14,8 +14,14 @@ public class Main {
         if (username.equals("admin") && password.equals("admin")) {
             admin.menuAdmin();
         }
-        else{
+        else if (username.equals("customer") && password.equals("customer")){
             mc.loginCust();
+        }
+        else{
+            while(username!="admin" || username!="customer"){
+                System.out.println("DATA TIDAK TERDAFTAR");
+                login();
+            }
         }
     }
     public static void main(String[] args) {
